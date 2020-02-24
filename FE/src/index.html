@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+
+  <title>Cominder</title>
+
+</head>
+<body>
+<!-- HEADER ---------------------------------------------------------- -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#" onclick="goHome()">Cominder</a>
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+    <div class="form-inline my-2 my-lg-0">
+      <button id="sign-up-btn" onclick="openRegistration()" class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
+      <button id="sign-in-btn"onclick="openLogin()" class="btn btn-outline-success my-2 my-sm-0">Sign In</button>
+    </div>
+  </div>
+</nav>
+
+<!-- LANDING ---------------------------------------------------------- -->
+  <div class="landing">
+    Here explain the app
+  </div>
+
+<!-- SIGN UP ---------------------------------------------------------- -->
+  <div class="sign-up" style="display: none;">
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 login-form-1">
+          <h3>Register for Restaurant</h3>
+          <form class="registerForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Username *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Restaurant Name *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Register"/>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+          <h3>Register for Person</h3>
+          <form class="registerForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Username *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Register"/>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- SING IN ---------------------------------------------------------- -->
+  <div class="sign-in" style="display: none;">
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 login-form-1">
+          <h3>Login for Restaurant</h3>
+          <form class="loginForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Username *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Login"/>
+            </div>
+            <div class="form-group">
+              <a href="#" class="ForgetPwd">Forget Password?</a>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 login-form-2">
+          <h3>Login for Person</h3>
+          <form class="loginForm">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your Username *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" placeholder="Your Password *" value="" />
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btnSubmit" value="Login"/>
+            </div>
+            <div class="form-group">
+              <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- APP---------------------------------------------------------- -->
+  <div class="main" id="main" style="display: none;">
+    <h3>You are watching the app</h3>
+  </div>
+
+  <!-- footer---------------------------------------------------------- -->
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <a class="navbar-brand" href="#">This is a footer</a>
+  </nav>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="./js/app.js"></script>
+  <script src="./js/ApiServer.js"></script>
+</body>
+</html>
