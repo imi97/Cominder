@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   
+  <!-- map -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="login.css">
@@ -28,10 +33,10 @@
     </div>
   </div>
 </nav>
-
 <!-- LANDING ---------------------------------------------------------- -->
   <div class="landing">
-    Here explain the app
+    <div>Explain App</div>
+    
   </div>
 
 <!-- SIGN UP ---------------------------------------------------------- -->
@@ -118,16 +123,16 @@
 <!-- APP---------------------------------------------------------- -->
   <div class="main" id="main" style="display: none;">
     <div class="row">
-      <div class="col-4">
+      <div class="col-2">
         <div class="list-group" id="list-tab" role="tablist">
           <a class="list-group-item list-group-item-action active" id="list-sales-list" data-toggle="list" href="#list-sales" role="tab" aria-controls="sales">Restaurant Sales</a>
           <a class="list-group-item list-group-item-action" id="list-groups-list" data-toggle="list" href="#list-groups" role="tab" aria-controls="groups">Groups</a>
           <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-my-groups" role="tab" aria-controls="my-groups">MyChats</a>
-          <a class="list-group-item list-group-item-action" id="list-map" data-toggle="list" href="#map" role="tab" aria-controls="map">Map</a>
+          <a class="list-group-item list-group-item-action" id="list-map" data-toggle="list" href="#map-option" role="tab" aria-controls="map">Map</a>
           <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
         </div>
       </div>
-      <div class="col-8">
+      <div class="col-4">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="list-sales" role="tabpanel" aria-labelledby="list-sales-list">
             Restaurant Sales
@@ -162,14 +167,22 @@
           <div class="tab-pane fade" id="list-my-groups" role="tabpanel" aria-labelledby="list-my-groups-list">
             Here put the groups and sales that im into
           </div>
-          <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="list-map">
-            Here add map
+          <div class="tab-pane fade" id="map-option" role="tabpanel" aria-labelledby="list-map">
+            <input type="text"> Search place?<br>
+            <button>Add group destination?</button>
           </div>
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
             Here add Settings
           </div>
         </div>
       </div>
+      <div class="col-6">
+        <div class="chat" id="chat">Aqui poner el chat?</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="map"></div>
     </div>
   </div>
 
@@ -178,7 +191,6 @@
     <a class="navbar-brand" href="#">This is a footer</a>
   </nav>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="./js/app.js"></script>

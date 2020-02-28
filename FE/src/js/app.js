@@ -17,7 +17,7 @@ function goHome() {
 
 function showLanding() {
   $('.landing').show();
-  
+
   $('.sign-up').hide();
   $('.main').hide();
   $('.sign-in').hide();
@@ -41,6 +41,7 @@ function openLogin() {
 
 function openApp() {
   $('.main').show();
+  $('.map').load('./map.html');
 
   $('.sign-in').hide();
   $('.sign-up').hide();
@@ -54,5 +55,3 @@ function sendRegistration() {
 function sendLogin() {
   connect();
 }
-
-
