@@ -29,8 +29,15 @@ map.on('load', function(e) {
     'source': 'restaurants-source',
     'layout': {
       'icon-image': 'restaurant-15',
-      'icon-size': 1.5
-    }      
+      'icon-size': 1.5,
+      'text-field': ['get', 'title'],
+      'text-variable-anchor': ['top'],
+      'text-radial-offset': 1,
+      'text-justify': 'auto',
+    },
+    paint: {
+      "text-color": "#ffffff"
+    }
   });
 });
 
@@ -60,3 +67,13 @@ map.on('click', function(e) {
     .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
     .addTo(map);
 });
+
+// Add geolocate control to the map.
+map.addControl(
+  new mapboxgl.GeolocateControl({
+    positionOptions: {
+    enableHighAccuracy: true
+  },
+    trackUserLocation: true
+  })
+);
