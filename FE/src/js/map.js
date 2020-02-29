@@ -30,10 +30,13 @@ map.on('load', function(e) {
     'layout': {
       'icon-image': 'restaurant-15',
       'icon-size': 1.5,
+      'icon-allow-overlap': true,
+      'icon-ignore-placement': true,
       'text-field': ['get', 'title'],
       'text-variable-anchor': ['top'],
       'text-radial-offset': 1,
       'text-justify': 'auto',
+      'text-allow-overlap': true,
     },
     paint: {
       "text-color": "#ffffff"
