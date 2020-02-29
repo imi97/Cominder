@@ -27,7 +27,7 @@ app.get('/points', (req, res) => {
 app.post('/point', (req, res) => {
   const point = req.body;
   points['features'].push(point);
-  res.send('Point is added to the database');
+  res.json(points);
 });
 
 app.listen(AppPort, () => console.log(`Hello world app listening on port ${AppPort}!`));
