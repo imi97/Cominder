@@ -1,6 +1,7 @@
 var userType = ''; // Will be type restaurant or client
 var username = ''; // Name
 var geojson = []; // Points in the map
+var popup;
 
 $('.loginForm').submit(function(e) {
   sendLogin();

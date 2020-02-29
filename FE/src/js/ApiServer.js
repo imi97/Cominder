@@ -15,6 +15,9 @@ function postRestaurant(geoPoint) {
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(geoPoint));
   xhr.onreadystatechange = processRequest;
+  if(popup !== undefined) {
+    popup.remove()
+  }
 }
 
 function processRequest() {

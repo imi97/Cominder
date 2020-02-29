@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53OG1jM3o5MXoifQ._rJdKgn_Nx_wsi7blKBlCQ'; // replace this with your access token
-      
-// var lastFeatures = []; TODO remove
+var numFeatures;
+
 var map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v10', // replace this with your style URL
@@ -9,13 +9,18 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function(e) {
+  numFeatures = geojson.features.length;
+
   map.addSource('restaurants-source', {
     'type': 'geojson',
     'data': geojson
   });
     
   window.setInterval(function() {
-    map.getSource('restaurants-source').setData(geojson);
+    if(numFeatures !== geojson.features.length) {
+      map.getSource('restaurants-source').setData(geojson);
+      numFeatures = geojson.features.length;
+    }
   }, 2000);
 
   map.addLayer({
@@ -37,7 +42,7 @@ map.on('click', function(e) {
   });
 
   if (!features.length) {
-    var popup = new mapboxgl.Popup({ offset: [0, -15] }) // TODO: Close it when submit button
+    popup = new mapboxgl.Popup({ offset: [0, -15] }) // TODO: Close it when submit button
       .setLngLat(e.lngLat)
       .setHTML(
         '<h3>' + "Add group:" + '</h3>' + 
@@ -50,7 +55,7 @@ map.on('click', function(e) {
 
   var feature = features[0];
 
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+  popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
     .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
     .addTo(map);
