@@ -1,27 +1,47 @@
-var connection = null;
+var xhr;
+const apiPort = 9034;
+const apiURL = 'http://127.0.0.1';
 
-function connect() {
-  connection = new WebSocket('ws://127.0.0.1:9035');
+function getMapPoints() {
+  xhr = new XMLHttpRequest();
+  xhr.open('GET', `${apiURL}:${apiPort}/points`, true);
+  xhr.send();
+  xhr.onreadystatechange = processRequest;
+}
 
-  connection.onopen = () => {
-    console.log('Connection is open and ready to use');
-  };
+function postRestaurant(geoPoint) {
+  xhr = new XMLHttpRequest();
+  xhr.open('POST', `${apiURL}:${apiPort}/point`, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(JSON.stringify(geoPoint));
+  xhr.onreadystatechange = processRequest;
+  if(popup !== undefined) {
+    popup.remove()
+  }
+}
 
-  connection.onmessage = (msg) => {
-    var obj = JSON.parse(msg.data);
+function processRequest() {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    geojson = JSON.parse(xhr.responseText);
+  }
+}
 
-    switch (obj.type) {
-      case 'LoginOK':
-        console.log('LoginStatus: Success', obj );
-        openApp();
-        break;
-
-      // TODO
-      case 'LoginWRONG':
-        alert('Wrong password' );
-
-      default:
-        break;
+addGroupFromMap = (lng, lst) => {
+  var groupName = $('#addGroupInput').val();
+  var descriptionGroup = $('#descriptionGroup').val();
+  var geoPoint = {
+    type: "Feature",
+    properties: {
+      title: groupName,
+      description: descriptionGroup
+    },
+    geometry: {
+      coordinates: [
+        lng,
+        lst
+      ],
+      type: "Point"
     }
-  };
+  }
+  postRestaurant(geoPoint); // TODO: Change to Postgroup
 }

@@ -1,5 +1,7 @@
-var userType = '';
-var username = '';
+var userType = ''; // Will be type restaurant or client
+var username = ''; // Name
+var geojson = []; // Points in the map
+var popup;
 
 $('.loginForm').submit(function(e) {
   sendLogin();
@@ -17,7 +19,7 @@ function goHome() {
 
 function showLanding() {
   $('.landing').show();
-  
+
   $('.sign-up').hide();
   $('.main').hide();
   $('.sign-in').hide();
@@ -41,6 +43,7 @@ function openLogin() {
 
 function openApp() {
   $('.main').show();
+  $('.map').load('./map.html');
 
   $('.sign-in').hide();
   $('.sign-up').hide();
@@ -54,5 +57,3 @@ function sendRegistration() {
 function sendLogin() {
   connect();
 }
-
-
