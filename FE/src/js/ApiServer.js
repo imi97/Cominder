@@ -9,10 +9,12 @@ function connect() {
 
   connection.onmessage = (msg) => {
     var obj = JSON.parse(msg.data);
+    console.log(msg.data)
 
     switch (obj.type) {
       case 'LoginOK':
         console.log('LoginStatus: Success', obj );
+        getMapPoints();
         openApp();
         break;
 
@@ -24,4 +26,20 @@ function connect() {
         break;
     }
   };
+}
+
+var xhr = new XMLHttpRequest();
+const apiPort = 9034;
+const apiURL = 'http://127.0.0.1';
+
+function getMapPoints() {
+  xhr.open('GET', `${apiURL}:${apiPort}/points`, true);
+  xhr.send();
+  xhr.onreadystatechange = processRequest;
+}
+
+function processRequest(e) {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    geojson = JSON.parse(xhr.responseText);
+  }
 }
