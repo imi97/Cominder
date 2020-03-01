@@ -73,3 +73,6 @@ map.addControl(
     trackUserLocation: true
   })
 );
+
+// Add navigation controls
+map.addControl(new mapboxgl.NavigationControl());

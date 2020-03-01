@@ -24,8 +24,6 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
 // ------------------ END POINTS -------------------------------
 
 // GET 
@@ -43,10 +41,6 @@ app.post('/point', (req, res) => {
 });
 
 app.listen(AppPort, () => console.log(`Hello world app listening on port ${AppPort}!`));
-
-
-
-
 
 // ------------------  WEB SOCKET  -------------------------------
 wss.on('connection', (ws) => {
