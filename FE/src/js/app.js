@@ -1,14 +1,27 @@
 var userType = ''; // Will be type restaurant or client
-var username = ''; // Name
+var username = 'Username'; // Name
 var geojson = []; // Points in the map
 var popup;
+var map;
 
-$('.loginForm').submit(function(e) {
+$('.loginForm-r').submit(function() {
+  username = $('#rest-username-login').val();
+  sendLogin();
+  return false;
+});
+$('.loginForm-p').submit(function() {
+  username = $('#person-username-login').val();
   sendLogin();
   return false;
 });
 
-$('.registerForm').submit(function(e) {
+$('.registerForm-r').submit(function() {
+  username = $('#rest-username-register').val();
+  sendRegistration();
+  return false;
+});
+$('.registerForm-p').submit(function() {
+  username = $('#person-username-register').val();
   sendRegistration();
   return false;
 });
@@ -34,6 +47,7 @@ function openRegistration() {
 }
 
 function openLogin() {
+  console.log("asdfasdf")
   $('.sign-in').show();
 
   $('.main').hide();
@@ -43,6 +57,11 @@ function openLogin() {
 
 function openApp() {
   $('.main').show();
+  $('#sign-in-btn').hide();
+  $('#sign-up-btn').hide();
+  $('#username-btn').html(username);
+  $('#username-btn').show();
+
   $('.map').load('./map.html');
 
   $('.sign-in').hide();
@@ -56,4 +75,8 @@ function sendRegistration() {
 
 function sendLogin() {
   connect();
+}
+
+function updateMap() {
+  getMapPoints();
 }

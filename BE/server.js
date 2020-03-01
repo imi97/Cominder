@@ -1,3 +1,4 @@
+var db = require('./databases');
 const express = require('express')
 const http = require('http');
 const firebase = require("firebase");
@@ -13,17 +14,26 @@ const wss = new WebSocket.Server({
 
 const AppPort = 9034;
 const WsPort = 9035;
+
 firebase.initializeApp(firebaseConfig);
 
-let points = [];
+var points = db.points;// TODO: Use firebase
+var restaurantSales = db.restaurantSales;
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// ------------------ END POINTS -------------------------------
+
+// GET 
+//    all the restaurants in the map
 app.get('/points', (req, res) => {
   res.json(points);
 });
 
+// POST 
+//    new restaurant in map
 app.post('/point', (req, res) => {
   const point = req.body;
   points['features'].push(point);
@@ -32,8 +42,7 @@ app.post('/point', (req, res) => {
 
 app.listen(AppPort, () => console.log(`Hello world app listening on port ${AppPort}!`));
 
-
-// WEB SOCKET FOR CHAT ---------------
+// ------------------  WEB SOCKET  -------------------------------
 wss.on('connection', (ws) => {
   //connection is up, let's add a simple simple event
   ws.on('message', (message) => {
@@ -61,32 +70,3 @@ wss.on('connection', (ws) => {
 server.listen(process.env.PORT || WsPort, () => {
   console.log(`Server started on port ${server.address().port} :)`);
 });
-
-points = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {
-        "title": "El Mussol",
-        "description": "A restaurant to eat owls"
-      },
-      "geometry": {
-        "coordinates": [2.1915381401222476, 41.40480971528061],
-        "type": "Point"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "title": "Tagliatella",
-        "description": "A fancy restaurant to eat good pasta"
-      },
-      "geometry": {
-        "coordinates": [2.192299385042361, 41.404939986348154],
-        "type": "Point"
-      }
-    },
-    
-  ],
-}
