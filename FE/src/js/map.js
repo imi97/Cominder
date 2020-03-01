@@ -1,9 +1,9 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoieGF2aXNhbnRhIiwiYSI6ImNrNzIwejBjaDA0aTIzZm53OG1jM3o5MXoifQ._rJdKgn_Nx_wsi7blKBlCQ'; // replace this with your access token
-var numFeatures;
 
 var map = new mapboxgl.Map({
   container: 'map',
-  style: 'mapbox://styles/mapbox/dark-v10', // replace this with your style URL
+  // style: 'mapbox://styles/mapbox/dark-v10', // replace this with your style URL
+  style: 'mapbox://styles/xavisanta/ck789zwyd19i81iql3e3qy1lu',
   center: [2.191607919009357, 41.40499328136784],
   zoom: 13.7
 });
@@ -15,20 +15,13 @@ map.on('load', function(e) {
     'type': 'geojson',
     'data': geojson
   });
-    
-  window.setInterval(function() {
-    if(numFeatures !== geojson.features.length) {
-      map.getSource('restaurants-source').setData(geojson);
-      numFeatures = geojson.features.length;
-    }
-  }, 2000);
 
   map.addLayer({
     'id': 'restaurants-layer',
     'type': 'symbol',
     'source': 'restaurants-source',
     'layout': {
-      'icon-image': 'restaurant-15',
+      'icon-image': 'barcelona-metro',
       'icon-size': 1.5,
       'icon-allow-overlap': true,
       'icon-ignore-placement': true,
